@@ -14,11 +14,13 @@ export default function BugEffectLoop() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    setCount(count + 1);
-  });
+    setCount((previous) => previous + 1);
+  }, []);
 
   return <p>Bug 1 Count: {count}</p>;
 }
 
 // Explanation:
-// (Write your explanation here)
+/* The reason that effect ran after every render becasue it did not have a dependency array. So I added an empty array.
+This works now because the empty array stops the effect from running after every re render. 
+*/
