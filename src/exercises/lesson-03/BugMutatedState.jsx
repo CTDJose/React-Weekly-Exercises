@@ -13,8 +13,7 @@ export default function BugMutatedState() {
   let [count, setCount] = useState(0);
 
   function handleAdd() {
-    count++;
-    setCount(count);
+    setCount(count + 1);
   }
 
   return (
@@ -26,4 +25,7 @@ export default function BugMutatedState() {
 }
 
 // Explanation:
-// (Write your explanation here)
+/* The reason that it was not working was the count was being updated outside of the setCount. Count + 1 is better becuase it 
+dosent change the original value of count. With these react can re-ender the display.
+
+*/
