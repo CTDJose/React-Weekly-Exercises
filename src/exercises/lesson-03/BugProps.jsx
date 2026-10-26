@@ -1,5 +1,7 @@
 // src/exercises/lesson-03/BugProps.jsx
 
+import { useState } from 'react';
+
 /*
   BUG #3 — Props Not Updating
 
@@ -13,10 +15,9 @@
 */
 
 export default function BugProps({ name = 'friend' }) {
-  let message = 'Hello, ' + name;
-
+  const [message, newMessage] = useState('Hello ' + name);
   function handleChange() {
-    message = 'Hi, ' + name + '!';
+    newMessage('Hi, ' + name + '!');
   }
 
   return (
@@ -28,4 +29,8 @@ export default function BugProps({ name = 'friend' }) {
 }
 
 // Explanation:
-// (Write your explanation here)
+/*The reason that it wasent working becuase the code was changing variables there was not a use state or setters. I added a useState
+so it could store the initial message as well a setter. When the button is cliked the setter takes effect after that
+React displays the new message.
+
+*/
