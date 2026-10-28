@@ -7,9 +7,12 @@ export default function BugStrictMode() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    setInterval(() => {
+    const secID = setInterval(() => {
       setCount((c) => c + 1);
     }, 1000);
+    return () => {
+      clearInterval(secID);
+    };
   }, []);
 
   return (
@@ -20,4 +23,6 @@ export default function BugStrictMode() {
   );
 }
 
-// Write your explanation of how StrictMode helps us catch this bug
+/* The reason that strict catches this bug is because it runs the effect twice. Thats because when the original code from before would
+run the count would be 2 becuase it was not being cleared. 
+*/

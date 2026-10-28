@@ -1,3 +1,4 @@
+//Parent.jsx
 import { useState } from 'react';
 import Child from './Child';
 
@@ -12,7 +13,7 @@ export default function Parent() {
     <div>
       <h2>Parent-Child Communication</h2>
       <p>Counter: {count}</p>
-      <Child />
+      <Child onIncrement={increment} />
     </div>
   );
 }
